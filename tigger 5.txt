@@ -1,0 +1,9 @@
+create or replace trigger check
+Before insert or update on Instructor
+For each row
+Begin
+if to_number(to_char(sysdate,'hh24'))<18 or
+to_number(to_char(sysdate,'hh24'))>=10 then 
+raise_application_erroe(-20004,'you cannot update or insert between 6PM to 10AM');
+end if;
+end; 

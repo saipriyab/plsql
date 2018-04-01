@@ -1,0 +1,59 @@
+SQL> select * from course;
+
+COURS     DEPTNO
+----- ----------
+TITLE
+---------------------------------------------------------------------------
+DESCRIPTION
+--------------------------------------------------------------------------------
+ADDITIONAL_FEES
+---------------
+CS121        151
+DBMS
+Database
+          18000
+
+
+COURS     DEPTNO
+----- ----------
+TITLE
+---------------------------------------------------------------------------
+DESCRIPTION
+--------------------------------------------------------------------------------
+ADDITIONAL_FEES
+---------------
+CS122        161
+SE
+Software Engineering
+          19000
+SQL> CREATE OR REPLACE PROCEDURE deletecourse
+  2  (descrip IN varchar2)
+  3  IS
+  4  BEGIN
+  5  delete from course where description IN(descrip);
+  6  END;
+  7  /
+
+Procedure created.
+
+SQL> BEGIN
+  2  deletecourse('Software Engineering');
+  3  END;
+  4  /
+
+PL/SQL procedure successfully completed.
+
+SQL> select  * from course;
+
+COURS     DEPTNO
+----- ----------
+TITLE
+---------------------------------------------------------------------------
+DESCRIPTION
+--------------------------------------------------------------------------------
+ADDITIONAL_FEES
+---------------
+CS121        151
+DBMS
+Database
+          18000

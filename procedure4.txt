@@ -1,0 +1,34 @@
+create or replace package overloading is
+function x(a NUMBER,b NUMBER,c NUMBER,d NUMBER,e NUMBER)
+return NUMBER;
+function x(a1 NUMBER,b1 NUMBER)
+return NUMBER;
+function x(a2 NUMBER,b2 NUMBER,c3 NUMBER)
+return NUMBER;
+END overloading;
+/
+------------------
+CREATE OR REPLACE PACKAGE BODY overloading is
+FUNCTION x
+(a NUMBER,b NUMBER,c NUMBER,d NUMBER,e NUMBER) return NUMBER is
+x1 NUMBER:=0;
+BEGIN
+x1:=a+b+c+d+e;
+RETURN x1;
+END x;
+FUNCTION x
+(a1 NUMBER,b1 NUMBER)
+x2 NUMBER:=0;
+BEGIN
+x2:=a1-b1;
+RETURN x2;
+END x;
+FUNCTION x
+(a2 NUMBER,b2 NUMBER,c3 NUMBER)
+x3 NUMBER:=0;
+BEGIN
+x3:=a2*b2*c3;
+RETURN x3;
+END x;
+END overlaoding;
+/

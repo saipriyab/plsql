@@ -1,0 +1,6 @@
+CREATE OR REPLACE PROCEDURE display(user IN varchar2)
+ IS
+ BEGIN
+select * from dba_role_privs where granted_role IN(user);
+END;
+  /

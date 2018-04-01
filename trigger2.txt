@@ -1,0 +1,7 @@
+create or replace trigger check3
+Before update on class
+For each row
+Begin
+dbms_output.put_Line(to_char(sysdate,'DY'));
+END;
+/

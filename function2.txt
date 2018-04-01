@@ -1,0 +1,7 @@
+create or replace function fun1(classid,scheduleid,classbuilding,classroom,deptno,instructorid,semester,year)
+return classid as
+BEGIN
+insert into class values(classid,scheduleid,classbuilding,classroom,deptno,instructorid,semester,year);
+return classid;
+end fun1;
+/

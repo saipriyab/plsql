@@ -1,0 +1,29 @@
+1.create table Department(DeptNo Integer primary key,DeptName varchar(21) not null,deptlocation varchar(13) not null);
+--------------------------------
+2.create table Employee(Empno Integer primary key,Ename varchar(30) not null,job varchar(12),mgr Integer,hiredate date,
+salary number(7,2) check(salary>0),comm number(7,2),deptno Integer  ,gender varchar(12) check(Gender In('Male','Female')),
+Foreign key(mgr)  references Employee(empno),Foreign key(deptno)  references department(deptno) );
+--------------------------------
+3.create table Student(Studentid varchar(21) primary key,FirstName varchar(21) not null,LastName varchar(21) not null,
+Date_Of_Birth Date,Address varchar(300),City varchar(20) not null,State varchar(12) not null,Zipcode varchar(9) not null,
+Telephone varchar(10) default 'NA',Fax varchar(10) default 'NA',Email varchar(100) not null);
+--------------------------------
+4.create table Instructor(InstructorId varchar(20) primary key,DeptNo Integer,FirstName varchar(21) not null,LastName varchar(21) not null,
+Telephone varchar(10) default 'NA',Faxvarchar(10) default 'NA',Email varchar(100) not null,
+Foreign key(DeptNo) references Department(DeptNo));
+--------------------------------
+5.create table course(courseId varchar(5),DeptNo Integer,Title varchar(75) not null,Description varchar(200) not null,
+additional_fees Number(9,2) check(additional_fees>0),Foreign key(DeptNo) references Department(DeptNo),
+primary key(courseId,DeptNo));
+--------------------------------
+6.create table Schedule_Type(ScheduleId varchar(20) primary key,Description varchar(200) not null,Day Number check (Day In(1,2,3,4,5,67)),
+StartingTime Date default sysdate,Duration Integer not null);
+---------------------------------
+7.create table ClassLocation(ClassBuilding varchar(25) not null,ClassRoom varchar(25) not null,SeatingCapacity varchar(2) default 100);
+---------------------------------
+8.create table Class(ClassId varchar(20) primary key,scheduleid varchar(20),classBuilding varchar(25) not null,classRoom varchar(25) not null,
+DeptNo Integer,InstructorId varchar(20),Semester varchar(6) default 'I',Year Dtae default sysdate,
+Foreign key(scheduleid) references Schedule_Type(ScheduleId),Foreign key(InstructorId) Instructor(InstructorId));
+---------------------------------
+9.create table StudentSchedule(StudentId varchar(20),ClassId varchar(20),Grade varchar(2) check (Grade In('A','A+''B','B+',
+'C','C+')),GradeAssigned Date default sysdate);

@@ -1,0 +1,8 @@
+Create or replace trigger check1
+Before insert or update or delete on student
+For each row
+Begin
+if to_char(sysdate,'DY')='MON' or to_char(sysdatem'DY')='WED' or to_char(sysdate,'DY')='SUN' then
+raise_application_error(-20004,'cannot insert or delete or update on monday,wednesday,sunday');
+end if;
+end;

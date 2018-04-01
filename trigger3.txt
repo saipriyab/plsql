@@ -1,0 +1,6 @@
+create or replace trigger check2
+Before delete on department
+For each row
+BEGIN
+dbms_output.put_Line('deletion not allowed');
+END;
